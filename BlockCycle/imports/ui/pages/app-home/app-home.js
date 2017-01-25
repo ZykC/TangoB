@@ -21,7 +21,9 @@ Template.App_home.helpers({
 	            let obj_desc = x.obj_desc;
 	            let obj_weight = x.obj_weight;
 	            let obj_val = x.obj_val;
+              let obj_address = x.obj_address;
 	            let obj_price = x.obj_price;
+              let obj_sourcer = x.obj_sourcer;
 
             	to_return.push({
                 picture: obj_img,
@@ -29,7 +31,9 @@ Template.App_home.helpers({
 	             	desc: obj_desc,
 	            	weight: obj_weight,
 	            	val: obj_val,
-	            	price: obj_price
+                address: obj_address,
+	            	price: obj_price,
+                sourcer: obj_sourcer
             	});
 
 				});
@@ -38,45 +42,32 @@ Template.App_home.helpers({
     }
     //
 });
-
+var material_id;
 Template.App_home.events({
-  'click .js-acq-image-form':function(event){
-      $("#image_acq_form").modal('show');
-      console.log("object address:"+this.obj_address+" obj id: "+this._id);
-      obj_id = this.obj_address;
-      identifier = this._id;
-      Transport.insert({
-            _id: this._id,
-            obj_address:obj_id, 
-            createdOn:new Date(),
-            createdBy:Meteor.user()._id
-          });
-    }
-
+  'click .js-show-image-form':function(event){
+    material_id = this;
+    console.log(material_id);
+    $("#image_add_form").modal('show');
+},
 
 });
-Template.image_acq_form.events({
-    'submit .js-acq-image':function(event){
-      var taker_address;
 
-        taker_address = event.target.taker_address.value;
-        object_address = this.obj_address;
-        console.log("taker: "+taker_address+"object address:"+object_address);
-        myContract.bookMeterial(0, web3.eth.accounts[0], function(error, result){
-          if(!error)
-          console.log("resutl: "+result)
-          else
-          console.log("error: "+error)
-        })
-
-        if (Meteor.user()){
-
-          Transport.update({_id:identifier}, 
-                    {$set: {taker_address:taker_address}});
-
-          console.log(obj_id);
-      }
-        $("#image_acq_form").modal('hide');
-     return false;
-    }
-  });
+Template.image_add_form.events({
+'submit .js-add-image':function(event){
+  var img_src, img_alt;
+    console.log("form showen")
+    organization_name = event.target.organization_name.value;
+    benef_address = event.target.benef_address.value;
+    console.log("src: "+organization_name+" alt:"+benef_address);
+    console.log(myContract);
+      Transports.insert({
+        sourcer:obj_id.obj_sourcer_address,
+        organization_name:organization_name,
+        benef_address:benef_address,
+        createdOn:new Date()
+      });
+    $("#image_add_form").modal('hide');
+    //document.getElementById("aquireBtn").disabled = 'true';
+ return false;
+}
+});

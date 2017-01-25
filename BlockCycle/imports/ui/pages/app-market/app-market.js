@@ -21,6 +21,7 @@ Template.App_market.events({
         var name = event.target.name.value;
         var source = event.target.source.value;
         var description = event.target.description.value;
+        var address = event.target.address.value;
         var value = event.target.value.value;
         var weight = event.target.weight.value;
         var volume = event.target.volume.value;
@@ -34,7 +35,7 @@ Template.App_market.events({
         console.log(weight);
         console.log(volume);
         console.log(img_src);
-         myContract.addMeterial(name, img_src, description, source, price, web3.eth.accounts[0], function(error, result){
+         myContract.addMeterial(" Material name: "+name, " Description: "+description, " Address: " + address+" Address on blokcChain: ", web3.eth.accounts[0], " Price: "+ price, function(error, result){
         if(!error)
           console.log("resutl: "+result)
         else
@@ -46,14 +47,18 @@ Template.App_market.events({
             img_src:img_src,
             img_alt:"photo",
             obj_name:name,
+            obj_sourcer:source,
             obj_desc:description,
             obj_val:value,
+            obj_address:address,
             obj_weight:weight,
             obj_volume:volume,
             obj_price:price,
+            obj_sourcer_address:web3.eth.accounts[0],
             createdOn:new Date()
             
           });
+        console.log(web3.eth.accounts[0]);
             //createdBy:Meteor.user()._id
     },
 });

@@ -4,17 +4,21 @@ contract blockcycle {
 
 	struct Material{
 		uint id;
+		string addressBC;
 		string name;
-		string photo;
-		string description;
+		string desc;
 		string _address;
-		uint price;
-		address sourcer;
-		address benef;
-		uint contributersNumber;
-
+		string price;
+		string sourcer;
+		string benef;
 	}
 	
+	function toString(address x) returns (string) {
+        bytes memory b = new bytes(20);
+        for (uint i = 0; i < 20; i++)
+            b[i] = byte(uint8(uint(x) / (2**(8*(19 - i)))));
+        return string(b);
+    }
 	uint public materialsCount = 0;
 	mapping (uint => Material) public materials;
 	
@@ -25,24 +29,23 @@ contract blockcycle {
 
 	function addMeterial(
 						string _name, 
-						string _photo, 
 						string _description, 
+						string userAddress,
 						string __address,
-						uint _price){
+						string _price){
 		materials[materialsCount].id = materialsCount;
 		materials[materialsCount].name = _name;
-		materials[materialsCount].photo = _photo;
-		materials[materialsCount].description = _description;
+		materials[materialsCount].desc = _description;
 		materials[materialsCount]._address = __address;
 		materials[materialsCount].price = _price;
-		materials[materialsCount].sourcer = msg.sender;
-		materials[materialsCount].benef = 0x00000;
+		materials[materialsCount].sourcer = userAddress;
+		materials[materialsCount].benef = "0x00000";
 		materialsCount++;
 
 	}
 
-	function bookMaterial(uint _id){
-		materials[_id].benef = msg.sender;
+	function bookMaterial(uint _id, string benef_address){
+		materials[_id].benef = benef_address;
 /*
 		if (balances[msg.sender] < materials[_id].price){
 			return;

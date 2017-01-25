@@ -20,6 +20,7 @@ FlowRouter.route('/', {
   action() {
     BlazeLayout.render('App_base', { main: 'App_home' });
   },
+  
 });
 
 FlowRouter.route('/register', {

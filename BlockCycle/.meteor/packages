@@ -27,3 +27,4 @@ arillo:flow-router-helpers
 zimme:active-route
 session@1.1.6
 silentcicero:solc
+silentcicero:ethereumjs-accounts
