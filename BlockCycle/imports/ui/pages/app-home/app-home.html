@@ -1,0 +1,65 @@
+
+<template name="image_acq_form">  
+  <div class="modal fade" id="image_acq_form">  
+    <div class="modal-dialog">  
+      <div class="modal-content"> 
+        <div class="modal-header">  
+          <div class="modal-title"> 
+          </div>  
+        </div>  
+      <div class="modal-body">         
+        <form class="js-acq-image"> 
+        <div class="form-group">  
+         <label for="taker_address">Your address:</label>  
+          <textarea class="form-control" id="taker_address" placeholder="Describe the image here" name="taker_address"></textarea>  
+        </div>  
+          <button class="btn btn-success">save</button> 
+        </form>   
+      </div>  
+      <div class="modal-footer">  
+        <button class="btn btn-warning" data-dismiss="modal">cancel</button>  
+      </div>  
+      </div>  
+    </div>    
+  </div>
+</template>
+
+<template name="App_home">
+
+    <h1 class="title">BlockCycle</h1>
+        <span class="titleSmall">
+            <span class="glyphicon glyphicon-bitcoin"></span>lockchain Recycle</span>
+    <div class="content">
+    <h2>List of materials on the market</h2>
+    {{> image_acq_form}}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Picture </th>
+                <th>Name </th>
+                <th>Description</th>
+                <th>Weight</th>
+                <th>Co2 - environmental value</th>
+                <th>Price</th>
+                <th>Available options</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Loop through each registered domain and add it to the table -->
+            {{#each registeredDomains}}
+
+                <tr>
+                    <td><img class="js-image thumbnail-img"  src="{{picture}}" alt="picture" height="80" width="80" /> </td>
+                    <td>{{ this.name }}</td>
+                    <td>{{ this.desc }}</td>
+                    <td>{{ this.weight }}</td>
+                    <td>{{ this.val }}</td>
+                    <td>{{ this.price }}</td>
+                    <td> <button class="js-acq-image-form btn btn-success ">acquire object</button> </td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+     
+        </div>
+</template>
