@@ -102,7 +102,7 @@ if (Meteor.isClient) {
 
 
       $("#image_add_form").modal('hide');
-      myContract.addMeterial(" sourcer: "+Materials.findOne().obj_sourcer, " sourcer address: "+ Materials.findOne().obj_address, " sourcer id: " +Materials.findOne().obj_sourcer_address, " end user: "+organization_name, "end user address: "+benef_address, "end user id: "+Transports.findOne().benef_address_id, function(error, result){
+      myContract.addMeterial(" sourcer: "+Materials.findOne().obj_sourcer, " sourcer address: "+ Materials.findOne().obj_address, " sourcer id: " +Materials.findOne().obj_sourcer_address, " end user: "+organization_name, "end user address: "+benef_address + "end user id: "+Transports.findOne().benef_address_id, function(error, result){
         if(!error)
           console.log("resutl: "+result)
         else

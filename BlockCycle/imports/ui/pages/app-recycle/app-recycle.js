@@ -62,7 +62,7 @@ if (Meteor.isClient)
         organization_name = event.target.organization_name.value;
         benef_address = event.target.benef_address.value;
 
-        console.log("Materials findOne in Transports: "+material_id.obj_address);
+      //  console.log("Materials findOne in Transports: "+material_id.obj_address);
         
           Transporting.insert({
 
@@ -83,7 +83,7 @@ if (Meteor.isClient)
 
 
         $("#Transport_form").modal('hide');
-        myContract.addMeterial(" From: "+Transporting.findOne().from_address, " To: "+Transporting.findOne().to_identifier, " By: " + Transporting.findOne().Transporter_id, function(error, result){
+        myContract.addMeterial(" From: "+"Material address", " to: " +" Organization address ", " By: " + organization_name, " Id: " + web3.eth.accounts[0], function(error, result){
         if(!error)
           console.log("resutl: "+result)
         else
