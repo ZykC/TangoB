@@ -1,35 +1,68 @@
+<template name="Transport_form">
+
+<div class="modal fade" id="Transport_form">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-title">
+        </div>
+      </div>
+      <div class="modal-body">
+        <form class="js-add-image">
+          <div class="form-group">
+            <label for="organization_name">Organization name:</label>
+            <input type="text" class="form-control" id="organization_name" placeholder="url" name="organization_name"/>
+        </div>
+        <div class="form-group">
+         <label for="benef_address">Your address:</label>
+          <textarea class="form-control" id="benef_address" placeholder="Describe the image here" name="benef_address"></textarea>
+        </div>
+          <button class="btn btn-success">save</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-warning" data-dismiss="modal">cancel</button>
+      </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+
 <template name="App_recycle">
+{{>Transport_form}}
       <h1 class="title">BlockCycle</h1>
         <span class="titleSmall">
             <span class="glyphicon glyphicon-bitcoin"></span>lockchain Recycle</span>
     <div class="content">
-    <h2>Registered materials</h2>
+    <h2>Recycled materials</h2>
 <table class="table table-striped">
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Status</th>
-                <th>Current owner</th>
-                <th>Number of transfers</th>
-                <th>Weight</th>
-                <th>Volume</th>
-                <th>Co2</th>
+                <th>Material </th>
+                <th>From </th>
+                <th>unique id </th>
+                <th>To</th>
+                <th>Unique id </th>
+                <th>available option </th>
 
             </tr>
         </thead>
         <tbody>
             <!-- Loop through each registered domain and add it to the table -->
             {{#each registeredDomains}}
+
                 <tr>
-                    <td>{{ this.mname }}</td>
-                    <td>{{ this.status }}</td>
-                    <td>{{ this.owner }}</td>
-                    <td>{{ this.transfers }}</td>
-                    <td>{{ this.weight }}</td>
-                    <td>{{ this.volume }}</td>
-                    <td>{{ this.co2 }}</td>
-                    <td><button>Acquire</button></td>
-                    <td><button>Wait</button></td>
+                    <td> {{ sourcer_name }} <img class="js-image thumbnail-img"  src="{{obj_img}}" alt="picture" height="80" width="80" /> </td>
+                    <td> {{this.sourcer_address}} </td>
+
+                    <td>{{ this.sourcer_identifier }}</td>
+
+                    <td>{{ this.benef_address }}</td>
+
+                    <td>{{ this.benef_address_id }}</td>
+
+                    <td> <button id="aquireBtn" class="btn btn-success js-show-image-form">Transport object</button> </td>
                 </tr>
             {{/each}}
         </tbody>

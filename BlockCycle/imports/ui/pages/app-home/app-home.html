@@ -52,15 +52,14 @@
         <tbody>
             <!-- Loop through each registered domain and add it to the table -->
             {{#each registeredDomains}}
-
                 <tr>
-                    <td> {{ this.name }} <img class="js-image thumbnail-img"  src="{{picture}}" alt="picture" height="80" width="80" /> </td>
-                    <td> {{this.sourcer}} </td>
-                    <td>{{ this.desc }}</td>
-                    <td>{{ this.address }}</td>
-                    <td>{{ this.val }}</td>
-                    <td>{{ this.price }}</td>
-                    <td> <button id="aquireBtn" class="btn btn-success js-show-image-form">acquire object</button> </td>
+                    <td> {{ name }} <img class="js-image thumbnail-img"  src="{{picture}}" alt="picture" height="80" width="80" /> </td>
+                    <td> {{sourcer}} </td>
+                    <td>{{ desc }}</td>
+                    <td>{{ address }}</td>
+                    <td>{{ val }}</td>
+                    <td>{{ price }}</td>
+                    <td> <button class="btn btn-success js-show-image-form">acquire object</button> </td>
                 </tr>
             {{/each}}
         </tbody>
