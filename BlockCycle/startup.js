@@ -49,7 +49,7 @@ if (Meteor.isServer){
 	            createdOn:new Date()
 			}
 		);
-
+/*
 		Materials.insert(
 			{
 
@@ -67,7 +67,7 @@ if (Meteor.isServer){
 	            obj_sourcer_address:"0x7E279DEa1BE831cCE007BA3C74a28277f8c277d1",
 	            createdOn:new Date()
 			}
-		);
+		);*/
 
 		// count the images!
 		console.log("startup.js says: "+Materials.find().count());

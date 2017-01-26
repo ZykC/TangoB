@@ -83,7 +83,7 @@ if (Meteor.isClient)
 
 
         $("#Transport_form").modal('hide');
-        myContract.addMeterial(" From: "+"Material address", " to: " +" Organization address ", " By: " + organization_name, " Id: " + web3.eth.accounts[0], function(error, result){
+        myContract.addMeterial(" From: "+"Material address", " to: " +" Organization address ", " By: " + organization_name, " Id: " + web3.eth.accounts[0], 0, function(error, result){
         if(!error)
           console.log("resutl: "+result)
         else
