@@ -43,8 +43,8 @@ Template.App_stock.helpers({
 
 Template.App_stock.events({
   'click .js-show-image-form':function(event){
-      myContract.addMeterial(" Material name: ", " Description: ", " Address: " + " Address on blokcChain: ", web3.eth.accounts[0], " Price: ", function(error, result){
-        if(!error)
+      myContract.addMeterial(" Transport from: " + "Paris, 20eme arrondissement", " To: "+Transporting.findOne().Transporter_address, " By: "+ Transporting.findOne().Transporter_id, "DELIVERED !", function(error, result){
+        if(!error) 
           console.log("resutl: "+result)
         else
           console.log("error: "+error)

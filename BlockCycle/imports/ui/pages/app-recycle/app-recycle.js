@@ -83,7 +83,7 @@ if (Meteor.isClient)
 
 
         $("#Transport_form").modal('hide');
-        myContract.addMeterial(" Material name: ", " Description: ", " Address: " + " Address on blokcChain: ", web3.eth.accounts[0], " Price: ", function(error, result){
+        myContract.addMeterial(" From: "+Transporting.findOne().from_address, " To: "+Transporting.findOne().to_identifier, " By: " + Transporting.findOne().Transporter_id, function(error, result){
         if(!error)
           console.log("resutl: "+result)
         else

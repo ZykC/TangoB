@@ -35,7 +35,7 @@ Template.App_market.events({
         console.log(weight);
         console.log(volume);
         console.log(img_src);
-         myContract.addMeterial(" Material name: "+name, " Description: "+description, " Address: " + address+" Address on blokcChain: ", web3.eth.accounts[0], " Price: "+ price, function(error, result){
+        myContract.addMeterial(" Material name: "+name, " Description: "+description, " Address: " + address+" Address on blokcChain: ", web3.eth.accounts[0], " Price: "+ price, function(error, result){
         if(!error)
           console.log("resutl: "+result)
         else
