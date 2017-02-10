@@ -32,6 +32,8 @@ if (Meteor.isServer){
 			}
 		);
 
+
+
 		Materials.insert(
 			{
 
@@ -72,5 +74,7 @@ if (Meteor.isServer){
 		// count the images!
 		console.log("startup.js says: "+Materials.find().count());
 	}// end of if have no images
+
+
   });
 }

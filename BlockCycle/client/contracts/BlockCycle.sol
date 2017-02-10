@@ -1,16 +1,14 @@
+
 contract blockcycle {
 
 	mapping (address => uint) balances;
 
 	struct Material{
-		uint id;
-		string addressBC;
-		string name;
-		string desc;
-		string _address;
-		string price;
-		string sourcer;
-		string benef;
+		address id;
+		address sourcerId;
+		address benefId;
+		string hashAvailable;
+		string hashRecycled;
 	}
 	
 	function toString(address x) returns (string) {
@@ -20,40 +18,24 @@ contract blockcycle {
         return string(b);
     }
 	uint public materialsCount = 0;
-	mapping (uint => Material) public materials;
+	mapping (address => Material) public materials;
 	
-
+    
 	function blockcycle(){
 		//initialize liste of materials
 	}
 
-	function addMeterial(
-						string _name, 
-						string _description, 
-						string userAddress,
-						string __address,
-						string _price){
-		materials[materialsCount].id = materialsCount;
-		materials[materialsCount].name = _name;
-		materials[materialsCount].desc = _description;
-		materials[materialsCount]._address = __address;
-		materials[materialsCount].price = _price;
-		materials[materialsCount].sourcer = userAddress;
-		materials[materialsCount].benef = "0x00000";
+	function addMeterial(address _id, string _hash, address _sourcer){
+	//	materials[_id].id = materialsCount;
+		materials[_id].hashAvailable = _hash;
+		materials[_id].sourcerId = _sourcer;
+		materials[_id].benefId = 0x00;
 		materialsCount++;
-
 	}
 
-	function bookMaterial(uint _id, string benef_address){
-		materials[_id].benef = benef_address;
-/*
-		if (balances[msg.sender] < materials[_id].price){
-			return;
-		}else{
-			balances[msg.sender] = balances[msg.sender] - materials[_id].price;
-			balances[materials[materialsCount].sourcer] = balances[materials[materialsCount].sourcer] + materials[_id].price;
-			materials[materialsCount].contributersNumber++;
-		}*/
+	function bookMaterial(address _id, string _hash, address _benef){
+		materials[_id].hashRecycled = _hash;
+		materials[_id].benefId = _benef;
 
 	}
 
