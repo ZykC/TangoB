@@ -1,4 +1,3 @@
-
 contract blockcycle {
 
 	mapping (address => uint) balances;
@@ -7,7 +6,7 @@ contract blockcycle {
 		address id;
 		address sourcerId;
 		address benefId;
-		string hashAvailable;
+	//	string hashAvailable;
 		string hashRecycled;
 	}
 	
@@ -22,14 +21,19 @@ contract blockcycle {
 	
     
 	function blockcycle(){
+	    
 		//initialize liste of materials
 	}
+	
+	function test(uint n){
+	    materialsCount = 10;
+	}
 
-	function addMeterial(address _id, string _hash, address _sourcer){
+	function addMeterial(address _hash, string sep, address _sourcer){
 	//	materials[_id].id = materialsCount;
-		materials[_id].hashAvailable = _hash;
-		materials[_id].sourcerId = _sourcer;
-		materials[_id].benefId = 0x00;
+	//	materials[_id].hashAvailable = _hash;
+		materials[_hash].sourcerId = _sourcer;
+		materials[_hash].benefId = 0x00;
 		materialsCount++;
 	}
 

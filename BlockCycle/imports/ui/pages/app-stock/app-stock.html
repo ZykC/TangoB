@@ -11,18 +11,20 @@
                 <th>From</th>
                 <th>To</th>
                 <th>By</th>
-                <th>Id</th>
+                <th>Address</th>
             </tr>
         </thead>
+
+
         <tbody>
             <!-- Loop through each registered domain and add it to the table -->
-            {{#each registeredDomains}}
+            {{#each transporting}}
                 <tr>
-                    <td> <img class="js-image thumbnail-img"  src="{{obj_img}}" alt="picture" height="80" width="80" /> </td>
-                    <td>{{ transport_from }}</td>
-                    <td>{{ transport_to }}</td>
-                    <td>{{ transport_by }}</td>
-                    <td>{{ transport_id}}</td>
+                    <td> {{material}} <img class="js-image thumbnail-img"  src="{{photo}}" alt="picture" height="80" width="80" /> </td>
+                    <td>{{ from_address }}</td>
+                    <td>{{ to_identifier }}</td>
+                    <td>{{ Transporter_name }}</td>
+                    <td>{{ Transporter_address}}</td>
                     <td><button class="btn btn-success js-show-image-form">Received ?</button></td>
      
                 </tr>

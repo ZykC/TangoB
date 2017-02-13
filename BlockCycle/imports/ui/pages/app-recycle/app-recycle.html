@@ -41,26 +41,26 @@
             <tr>
                 <th>Material </th>
                 <th>From </th>
-                <th>unique id </th>
+                <th>Address </th>
                 <th>To</th>
-                <th>Unique id </th>
+                <th>Address </th>
                 <th>available option </th>
-
             </tr>
         </thead>
+
         <tbody>
             <!-- Loop through each registered domain and add it to the table -->
-            {{#each registeredDomains}}
+            {{#each transports}}
 
                 <tr>
-                    <td> {{ sourcer_name }} <img class="js-image thumbnail-img"  src="{{obj_img}}" alt="picture" height="80" width="80" /> </td>
-                    <td> {{this.sourcer_address}} </td>
+                    <td> {{ material_name }} <img class="js-image thumbnail-img"  src="{{photo}}" alt="photo" height="80" width="80" /> </td>
+                    <td> {{sourcer_name}} </td>
 
-                    <td>{{ this.sourcer_identifier }}</td>
+                    <td>{{ sourcer_address }}</td>
 
-                    <td>{{ this.benef_address }}</td>
+                    <td>{{ organization_name }}</td>
 
-                    <td>{{ this.benef_address_id }}</td>
+                    <td>{{ benef_address }}</td>
 
                     <td> <button id="aquireBtn" class="btn btn-success js-show-image-form">Transport object</button> </td>
                 </tr>

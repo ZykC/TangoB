@@ -7,7 +7,7 @@ Template.App_market.helpers({
 
 
 Template.App_market.events({
-    'submit .buyDomain'(event) {
+    'submit .buyDomain'(event){
         //event.preventDefault();
 
         console.log("hello");
@@ -30,14 +30,13 @@ Template.App_market.events({
        // const picture = target.picture.value;
         var materialInfos = name + source + description + address + value + weight + volume  + price + img_src;
         var materialHash = web3.sha3(materialInfos);
-        myContract.addMeterial(materialHash, web3.eth.accounts[0], " Price: "+ price, function(error, result){
+        myContract.addMeterial(materialHash, " sep ", web3.eth.accounts[0], function(error, result){
         if(!error)
           console.log("resutl: "+result)
         else
           console.log("error: "+error)
         })
-        // window.blockCycleContract.addMaterial("hvac3", "building", "12Kg", "elec", 1, 11, 22, {from: web3.eth.defaultAccount, gas:3000000}, function (e, r) { console.log(e); console.log(r); })
-
+   
         Materials.insert({
             obj_hash:materialHash,
             img_src:img_src,

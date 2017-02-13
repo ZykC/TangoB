@@ -32,8 +32,6 @@ if (Meteor.isServer){
 			}
 		);
 
-
-
 		Materials.insert(
 			{
 
@@ -51,7 +49,7 @@ if (Meteor.isServer){
 	            createdOn:new Date()
 			}
 		);
-/*
+
 		Materials.insert(
 			{
 
@@ -69,12 +67,80 @@ if (Meteor.isServer){
 	            obj_sourcer_address:"0x7E279DEa1BE831cCE007BA3C74a28277f8c277d1",
 	            createdOn:new Date()
 			}
-		);*/
+		);
+		for (var i = 4; i < 6; i++)
+		{
+			Materials.insert(
+				{
+
+ 
+		            img_src:"img_"+i+".jpg",
+		            img_alt:"photo",
+		            obj_name:"material "+i,
+		            obj_sourcer:"Company "+i,
+		            obj_desc:"Description "+i +" Non ergo erunt homines deliciis diffluentes audiendi, si quando de amicitia, quam nec usu nec ratione habent cognitam, disputabunt. Nam quis est, pro deorum fidem atque hominum! qui velit, ut neque diligat quemquam nec ipse ab ullo diligatur, circumfluere omnibus copiis atque in omnium rerum abundantia ",
+		            obj_val:"85",
+		            obj_address:"Address of material "+i+ " Haec enim est tyrannorum vita nimirum, in qua nulla fides, nulla caritas.",
+		            obj_weight: i,
+		            obj_volume:i/10,
+		            obj_price:i*15+i^2*3,
+		            obj_sourcer_address:"0x7E279DEa1BE831cCE007BA3C74a28277f8c277d1",
+		            createdOn:new Date()
+				}
+			);
 
 		// count the images!
 		console.log("startup.js says: "+Materials.find().count());
+		} // end of for insert Material loop
+
+		for (var i = 11; i < 16; i++)
+		{
+			Transports.insert({
+
+		          material_name:"material "+i,
+
+		          sourcer_name:"company "+i,
+
+		          sourcer_address:"address company "+i+" nulla stabilis benevolentiae potest esse fiducia.",
+
+		          sourcer_identifier:"0x8H315RFc1BE831cCE007BA3C74a28277f8c277d1",
+
+		          organization_name:"company "+i*5,
+		          
+		          benef_address:"benef " + (i*5) + " address" + " Asperos dignitatis delatae oppido regebat administrante forensium sed administrante insolenter haec excitatur negotiorum huius decuerat.",
+
+		          benef_address_id:"0x7E279DEa1BE831cCE007BA3C74a28277f8c277d1",
+
+		          photo:"img_"+i+".jpg",
+		          
+		          createdOn:new Date()
+        	});
+
+		}// end of for add transport material
+
+		for (var i = 6; i < 11; i++)
+		{
+			Transporting.insert({
+
+	            material:"material "+i,
+
+	            from_address:"address "+i + " Sed confertos persultat obvios mollia et sed hic municipia perterrens et.",
+
+	            to_identifier:"address "+i*3+" Subito conatibus est ad quidam exustus urbis vivus quidam visus.",
+
+	            Transporter_name:"transporter "+i*4,
+
+	            Transporter_address:"address transporter "+i*4 + " Mollia per nunc sed quae montium isdem quod si rectum statuerimus vel.",
+
+	            Transporter_id:"0x7E279DEa1BE831cCE007BA3C74a28277f8c277d1",
+
+	            photo:"img_"+i+".jpg",
+	            
+	            createdOn:new Date()
+          });
+
+		}// end of for add transporting material
+
 	}// end of if have no images
-
-
   });
 }
