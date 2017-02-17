@@ -4,8 +4,6 @@ console.log("App-recycle "+Materials.find().count());
 
 if (Meteor.isClient)
 {
-
-
   var material_id = 0;
   
   Template.App_recycle.helpers({transports:Transports.find()});
@@ -30,6 +28,8 @@ if (Meteor.isClient)
         
           Transporting.insert({
 
+            obj_hash:material_id.obj_hash,
+
             material:material_id.material_name,
 
             from_address:material_id.sourcer_address,
@@ -47,15 +47,23 @@ if (Meteor.isClient)
             createdOn:new Date()
           });
 
+        var transportInfo = material_id.material_name + material_id.sourcer_address + material_id.benef_address + organization_name + benef_address;
+        var transportHash = web3.sha3(transportInfo);
 
         $("#Transport_form").modal('hide');
 
-        myContract.addMeterial(" From: "+"Material address", " to: " +" Organization address ", " By: " + organization_name, " Id: " + web3.eth.accounts[0], 0, function(error, result){
+        myContract.transportMaterial(material_id.obj_hash, transportHash, web3.eth.accounts[0], function(error, result){
         if(!error)
           console.log("resutl: "+result)
         else
           console.log("error: "+error)
         })
+
+        console.log("material_id.materialHash: "+material_id.materialHash)
+
+        console.log("transportHash: "+transportHash)
+
+        console.log("web3.eth.accounts[0]: "+web3.eth.accounts[0])
         
         Transports.remove({_id: material_id._id})
 

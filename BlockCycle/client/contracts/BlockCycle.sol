@@ -1,13 +1,16 @@
 contract blockcycle {
 
 	mapping (address => uint) balances;
-
+    
 	struct Material{
-		address id;
+		bytes32 _id;
 		address sourcerId;
 		address benefId;
 	//	string hashAvailable;
-		string hashRecycled;
+	    address transId;
+		bytes32 hashRecycled;
+		bytes32 hashTransported;
+		bytes32 hashReceived;
 	}
 	
 	function toString(address x) returns (string) {
@@ -17,11 +20,10 @@ contract blockcycle {
         return string(b);
     }
 	uint public materialsCount = 0;
-	mapping (address => Material) public materials;
+	mapping (bytes32 => Material) public materials;
 	
     
 	function blockcycle(){
-	    
 		//initialize liste of materials
 	}
 	
@@ -29,18 +31,28 @@ contract blockcycle {
 	    materialsCount = 10;
 	}
 
-	function addMeterial(address _hash, string sep, address _sourcer){
+	function addMaterial(bytes32 _hash, address _sourcer){
 	//	materials[_id].id = materialsCount;
-	//	materials[_id].hashAvailable = _hash;
+		materials[_hash]._id = _hash;
 		materials[_hash].sourcerId = _sourcer;
 		materials[_hash].benefId = 0x00;
 		materialsCount++;
 	}
 
-	function bookMaterial(address _id, string _hash, address _benef){
+	function bookMaterial(bytes32 _id, bytes32 _hash, address _benef){
 		materials[_id].hashRecycled = _hash;
 		materials[_id].benefId = _benef;
 
+	}
+	
+	function transportMaterial(bytes32 _id, bytes32 _hash, address _trans){
+	    materials[_id].hashTransported = _hash;
+	    materials[_id].transId = _trans;
+	    
+	}
+	
+	function receiveMaterial(bytes32 _id, bytes32 _hash){
+	    materials[_id].hashReceived = _hash;
 	}
 
 }

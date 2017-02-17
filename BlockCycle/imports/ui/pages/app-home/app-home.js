@@ -25,11 +25,10 @@ if (Meteor.isClient) {
       organization_name = event.target.organization_name.value;
       benef_address = event.target.benef_address.value;
 
-      console.log("material id: "+Materials);
-
-      console.log("Materials findOne: "+Materials.findOne());
       
         Transports.insert({
+
+          obj_hash:material_id.obj_hash,
 
           material_name:material_id.obj_name,
 
@@ -52,7 +51,11 @@ if (Meteor.isClient) {
 
 
       $("#image_add_form").modal('hide');
-      myContract.addMeterial(" sourcer: "+Materials.findOne().obj_sourcer, " sourcer address: "+ Materials.findOne().obj_address, " sourcer id: " +Materials.findOne().obj_sourcer_address, " end user: "+organization_name, "end user address: "+benef_address + "end user id: "+Transports.findOne().benef_address_id, function(error, result){
+
+      var bookInfos = material_id.obj_name + material_id.obj_sourcer + material_id.obj_address + material_id.obj_sourcer_address + organization_name + benef_address;
+      var bookHash = web3.sha3(bookInfos);
+
+      myContract.bookMaterial(material_id.obj_hash, bookHash, web3.eth.accounts[0], function(error, result){
         if(!error)
           console.log("resutl: "+result)
         else

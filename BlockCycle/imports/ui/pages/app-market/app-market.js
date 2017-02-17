@@ -30,7 +30,8 @@ Template.App_market.events({
        // const picture = target.picture.value;
         var materialInfos = name + source + description + address + value + weight + volume  + price + img_src;
         var materialHash = web3.sha3(materialInfos);
-        myContract.addMeterial(materialHash, " sep ", web3.eth.accounts[0], function(error, result){
+
+        myContract.addMaterial(materialHash, web3.eth.accounts[0], function(error, result){
         if(!error)
           console.log("resutl: "+result)
         else
@@ -51,7 +52,6 @@ Template.App_market.events({
             obj_price:price,
             obj_sourcer_address:web3.eth.accounts[0],
             createdOn:new Date()
-            
           });
         console.log(web3.eth.accounts[0]);
             //createdBy:Meteor.user()._id
